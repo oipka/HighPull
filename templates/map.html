@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="dropdown">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Список авто
+  </button>
+  <div class="dropdown-menu dropdown-menu-right">
+    <form method = "POST">
+      {% for k in koord %}
+        <button class="dropdown-item" type="submit" name="number" value={{k.number}}>{{k.mark}} {{k.number}}</button>
+      {% endfor %}
+    </form>
+  </div>
+</div>
+    {% include "map_save.html" %}
+{% endblock %}
