@@ -1,36 +1,53 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <form method = "POST">
-                    <h1>Нарушения</h1>
-                        <table class="table table-dark">
-                          <thead>
-                            <tr>
-                              <th scope="col">№</th>
-                              <th scope="col">Фото</th>
-                              <th scope="col">Марка</th>
-                              <th scope="col">Номер</th>
-                              <th scope="col">Время</th>
-                              <th scope="col"></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for destroy in destroys %}
-                                <tr>
-                                  <th scope="row">{{destroy.id}}</th>
-                                  <td><img src={{destroy.path}}></td>
-                                  <td>{{destroy.mark}}</td>
-                                  <td>{{destroy.number}}</td>
-                                  <td>{{destroy.time}}</td>
-                                  <td><button class="btn btn-danger" type="submit" name="delete" value={{destroy.id}}>Удалить</button></td>
-                                </tr>
-                            {% endfor %}
-                          </tbody>
-                        </table>
-                </form>
+    <section class="index-section-2">
+        <div class="index-section-2__wrapper">
+            <div class="index-section-2__wrapper__header">
+                <div class="index-section-2__wrapper__header__sep"></div>
+                <h3>Нарушения</h3>
+                <div class="index-section-2__wrapper__header__sep"></div>
             </div>
         </div>
-    </div>
+        <div class="index-section-2__table1">
+            <div class="index-section-2__table1__header">
+                <div class="index-section-2__table1__header__count">
+                    <p>#</p>
+                </div>
+                <div class="index-section-2__table1__header__photo">
+                    <p>Фото</p>
+                </div>
+                <div class="index-section-2__table1__header__brand">
+                    <p>Марка</p>
+                </div>
+                <div class="index-section-2__table1__header__id">
+                    <p>Гос. номер</p>
+                </div>
+                <div class="index-section-2__table1__header__time">
+                    <p>Время</p>
+                </div>
+            </div>
+            <form method = "POST">
+                {% for destroy in destroys %}
+                  <div class="index-section-2__table1__list">
+                      <div class="index-section-2__table1__list__count">
+                          <p>{{destroy.id}}</p>
+                      </div>
+                      <div class="index-section-2__table1__list__photo">
+                          <p><a href="{{destroy.path}}">Открыть</a></p>
+                      </div>
+                      <div class="index-section-2__table1__list__brand">
+                          <p>{{destroy.mark}}</p>
+                      </div>
+                      <div class="index-section-2__table1__list__id">
+                          <p>{{destroy.number}}</p>
+                      </div>
+                      <div class="index-section-2__table1__list__time">
+                          <p>{{destroy.time}}</p>
+                          <button type="submit" name="delete" value={{destroy.id}}>Удалить</button>
+                      </div>
+                  </div>
+                {% endfor %}
+            </form>
+        </div>
+    </section>
 {% endblock content %}

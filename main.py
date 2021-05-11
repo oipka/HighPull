@@ -20,18 +20,9 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-@app.route('/', defaults={'width': None, 'height': None})
-@app.route('/<width>/<height>', methods=['GET', 'POST'])
-def index(width=None, height=None):
-    if not width or not height:
-        return """
-            <script>
-            (() => window.location.href = window.location.href +
-            ['', window.innerWidth, window.innerHeight].join('/'))()
-            </script>
-            """
-    print(width)
-    return render_template("index.html", width=width, height=height)
+@app.route('/')
+def index():
+    return render_template("index.html")
 
 @app.route('/camera', methods=['GET', 'POST'])
 def camera():
@@ -62,8 +53,6 @@ def map():
                         color='red',
                         weight=15,
                         opacity=0.8).add_to(folium_map)
-        # for i in range(len(loc)):
-        #     folium.Marker(loc[i], popup="Mt. Hood Meadows",).add_to(folium_map)
     folium_map.save('templates/map_save.html')
     koord = session.query(Check_Map).all()
     return render_template('map.html', koord=koord)
@@ -94,32 +83,35 @@ def search():
 
 
 
-@app.route('/stream/<dir>/<width>/<height>', methods=['GET', 'POST'])
-def stream(dir, width, height):
-    return Response(gen(VideoCamera(), dir=dir, width=width, height=height), mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route('/stream/<dir>/', methods=['GET', 'POST'])
+def stream(dir):
+    return Response(gen(VideoCamera(), dir=dir), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 
 
-def gen(camera, dir, width, height):
+def gen(camera, dir):
     camera.camera = cv2.VideoCapture(dir)
     while True:
-        frame, text, time, img = camera.get_frame(width, height)
+        frame, text, time, img = camera.get_frame()
         if len(text) != 0:
             for i in range(len(text)):
+                print(text[i])
                 if session.query(Auto).filter_by(number = text[i]).first():
                     print('Машина в розыске')
-                    if not session.query(Check_Map).filter_by(number = text[i]).first():
+                    if not session.query(Check_Map).filter_by(number = text[i]).first() or dir == 'camera_2.mp4':
                         camera_koord = session.query(Camera).filter_by(name=dir).first()
+                        if dir == 'camera_2.mp4':
+                            dir='123'
                         mark_auto = session.query(Auto).filter_by(number = text[i]).first()
 
-                        path = 'static/img_auto/' + str(text[i]) + '_' + str(time) + '.jpg'
-                        print(path)
+                        path = 'static/img_auto/' + str(text[i]) + '_' + str(time.replace(':', '-')) + '.jpg'
                         cv2.imwrite(path, img)
 
                         add_koord = Check_Map(mark = mark_auto.mark, number = text[i], koord = camera_koord.koord, time = time, path=path)
                         session.add(add_koord)
                         session.commit()
+
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 

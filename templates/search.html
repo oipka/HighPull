@@ -1,46 +1,50 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col col-lg-3"><h1>Объявить в розыск</h1>
-                <form method="POST">
-                  <div class="form-group">
-                    <label for="mark"><h4>Марка машины:</h4></label>
-                    <input class="form-control" type="text" maxlength="100" name="mark" placeholder="Марка">
-                  </div>
-                  <div class="form-group">
-                    <label for="number"><h4>Номер машины:</h4></label>
-                    <input class="form-control" maxlength="100" name="number" placeholder="Номер">
-                  </div>
-                  <button class="btn btn-primary" type="submit" name="add" value="add">Добавить</button>
-                </form>
-            </div>
-
-            <div class="col">
-                <form method = "POST">
-                    <h1>Список авто</h1>
-                        <table class="table table-dark">
-                          <thead>
-                            <tr>
-                              <th scope="col">№</th>
-                              <th scope="col">Марка</th>
-                              <th scope="col">Номер</th>
-                              <th scope="col"></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for car in cars %}
-                                <tr>
-                                  <th scope="row">{{car.id}}</th>
-                                  <td>{{car.mark}}</td>
-                                  <td>{{car.number}}</td>
-                                  <td><button class="btn btn-danger" type="submit" name="delete" value={{car.id}}>Удалить</button></td>
-                                </tr>
-                            {% endfor %}
-                          </tbody>
-                        </table>
-                </form>
+    <section class="index-section-2">
+        <div class="index-section-2__wrapper">
+            <div class="index-section-2__wrapper__header">
+                <div class="index-section-2__wrapper__header__sep"></div>
+                <h3>Добавить в розыск</h3>
+                <div class="index-section-2__wrapper__header__sep"></div>
             </div>
         </div>
-    </div>
+        <div class="index-section-2__wrapper-form">
+            <form method="POST" action="" class="index-section-2__wrapper-form__form">
+                <p>Марка машины:</p>
+                <input placeholder="Введите марку машины" name="mark" type="text">
+                <p>Номер машины:</p>
+                <input placeholder="Введите номер машины" name="number" type="text">
+                <button type="submit" name="add" value="add">Добавить запись в базу</button>
+            </form>
+        </div>
+        <div class="index-section-2__table">
+            <div class="index-section-2__table__header">
+                <div class="index-section-2__table__header__count">
+                    <p>#</p>
+                </div>
+                <div class="index-section-2__table__header__brand">
+                    <p>Марка</p>
+                </div>
+                <div class="index-section-2__table__header__id">
+                    <p>Гос. номер</p>
+                </div>
+            </div>
+            <form method = "POST">
+                {% for car in cars %}
+                  <div class="index-section-2__table__list">
+                      <div class="index-section-2__table__list__count">
+                          <p>{{car.id}}</p>
+                      </div>
+                      <div class="index-section-2__table__list__brand">
+                          <p>{{car.mark}}</p>
+                      </div>
+                      <div class="index-section-2__table__list__id">
+                          <p>{{car.number}}</p>
+<!--                          <button type="submit" name="delete" value={{car.id}}>Удалить</button>-->
+                      </div>
+                  </div>
+                {% endfor %}
+            </form>
+        </div>
+    </section>
 {% endblock content %}

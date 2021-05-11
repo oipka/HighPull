@@ -31,9 +31,7 @@ textDetector.load("latest")
 
 class VideoCamera(object):
 
-    def get_frame(self, width, height):
-        width = int(int(width) / 2)
-        height = int(int(height) / 2)
+    def get_frame(self):
         ret, img = self.camera.read()
         t = time.strftime('%Y-%m-%d_%H:%M:%S')
         img = cv2.putText(img, t, (10,50), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2, cv2.LINE_AA)
@@ -63,8 +61,5 @@ class VideoCamera(object):
             cv2.rectangle(img, (obj[0], obj[1]), (obj[2], obj[3]), (0, 0, 255))
             cv2.putText(img, textArr[x], (obj[0], obj[1]), cv2.FONT_HERSHEY_DUPLEX, 0.7, (255, 255, 225), 1)
             x=+1
-        print(width)
-        img = cv2.resize(img, (width, height), interpolation=cv2.INTER_LINEAR)
         ret, frame = cv2.imencode('.jpg', img)
-        print(t)
         return frame.tobytes(), textArr, t, img

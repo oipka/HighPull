@@ -1,18 +1,24 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <h1>Камеры</h1>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm" id="123">
-                <div class="embed-responsive embed-responsive-1by1">
-                    <iframe class="embed-responsive-item" src="{{ url_for('stream', dir='test.mp4', width=width, height=height) }}" allowfullscreen></iframe>
-                </div>
+    <section class="index-section-2">
+        <div class="index-section-2__wrapper">
+            <div class="index-section-2__wrapper__header">
+                <div class="index-section-2__wrapper__header__sep"></div>
+                <h3>Камеры видеонаблюдения</h3>
+                <div class="index-section-2__wrapper__header__sep"></div>
             </div>
-            <div class="col-sm">
-                <div class="embed-responsive embed-responsive-1by1">
-                    <iframe class="embed-responsive-item" src="{{ url_for('stream', dir='test.mp4', width=width, height=height) }}" allowfullscreen></iframe>
+        </div>
+    </section>
+    <section class="index-section-3">
+        <div class="index-section-3__wrapper">
+            <div class="index-section-3__wrapper__camera-list">
+                <div class="index-section-3__wrapper__camera-list__camera">
+                    <img src="{{ url_for('stream', dir='camera_1.mp4') }}" alt="camera1">
+                </div>
+                <div class="index-section-3__wrapper__camera-list__camera">
+                    <img src="{{ url_for('stream', dir='camera_2.mp4') }}" alt="camera1">
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock content %}
