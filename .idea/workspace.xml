@@ -2,26 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e77f0a9-16c0-4b82-b068-9ef0ebec51d4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auto.db" beforeDir="false" afterPath="$PROJECT_DIR$/auto.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/detection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img_auto/O264OA78_2021-04-29_11:39:45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img_auto/O264OA78_2021-04-29_11:46:41.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img_auto/O264OA78_2021-04-29_11:47:02.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img_auto/O264OA78_2021-04-29_11:59:28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img_auto/O264OA78_2021-04-29_11:59:38.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img_auto/O264OA78_2021-04-29_11:59:40.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img_auto/O264OA78_2021-04-29_12:00:43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img_auto/O264OA78_2021-04-29_12:47:57.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img_auto/O264OA78_2021-04-29_12:58:33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img_auto/O264OA78_2021-04-29_13:25:43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/camera.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/camera.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/destroy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/destroy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/map_save.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/map_save.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
